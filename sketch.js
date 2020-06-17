@@ -15,7 +15,8 @@ var block1 , block2 , block3, block4,block5,block6,block7,block8,block9,block10,
 block22 ;
 
 var block23,block24,block25,block26,block27,block28,block29,block30,block31,block32,block33,block34,block35,block36,block37,block38,block39,block40,block41,block42,block43;
-
+var bg;
+var score = 0;
 function preload() {
     //backgroundImg = loadImage("sprites/bg.png");
 }
@@ -101,7 +102,12 @@ block43  = new Box(480,140,20,20);
 }
 
 function draw(){
-    background(255);
+  if(bg)
+  background(bg);
+    
+    textSize(35);
+  //  fill("white");
+    text("score :"+ score,200,250);
    // background(backgroundImg);
     Engine.update(engine);
   //  strokeWeight(4);
@@ -159,7 +165,51 @@ function draw(){
 
   block41.display();
   block42.display();
-  block43.display();
+  block43.display(); 
+
+  block1.score();
+  block2.score(); 
+  block3.score();
+  block4.score();
+  block5.score();
+  block6.score();
+  block7.score();
+  block8.score();
+  block9.score();
+  block10.score();
+  block11.score();
+  block12.score();
+  block13.score();
+  block14.score();
+  block15.score();
+  block16.score();
+  block17.score();
+  block18.score();
+  block19.score();
+  block20.score();
+  block21.score();
+  block22.score();
+  block23.score();
+  block24.score();
+  block25.score();
+  block26.score();
+  block27.score();
+  block28.score();
+  block29.score();
+  block30.score();
+  block31.score();
+  block32.score();
+  block33.score();
+  block34.score();
+  block35.score();
+  block36.score();
+  block37.score();
+  block38.score();
+  block39.score();
+  block40.score();
+  block41.score();
+  block42.score();
+  block43.score();
 
 
   //  block23.display();
@@ -168,6 +218,7 @@ function draw(){
 
     stone.display();
     slingshot.display();
+    changebackground();
     //log6.display();
 
 }
@@ -183,5 +234,18 @@ function mouseReleased(){
 function keyPressed(){
   if(keyCode === 32){
     slingshot.attach(stone.body);
+  }
+}
+ async function changebackground(){
+  var response = await fetch ("http://worldclockapi.com/api/json/est/now");
+  var responseJSON = await response.json();
+  var datetime = responseJSON.currentDateTime;
+  var time = datetime.slice(12,14);
+  console.log(time);
+
+  if(time<=6 && time>=18){
+    bg = 0;
+  }else{
+    bg = 255;
   }
 }

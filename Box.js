@@ -34,6 +34,12 @@ class Box{
        image(this.image,this.body.position.x,this.body.position.y,20,20);
        pop()
       }
+      console.log(this.visibility);
+    }
+    score (){
+      if(this.visibility<0 && this.visibility>-1000){
+        score++;
+      }
     }
     
 
